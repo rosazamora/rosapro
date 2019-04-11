@@ -21,7 +21,7 @@
     function _max($array){}
     function _min($arrary){}    
 
- echo "hola";
+ echo "hola2";
         print_r(generaarray(15));
   
 
