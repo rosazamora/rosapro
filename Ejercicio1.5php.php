@@ -2,7 +2,7 @@
 //EJERCICIO 1.5
 
 /*ejemplo
-string(hola laura ramirez utilizamo ecplode
+string(hola laura ramirez utilizamo explode
 array("hola","laura", Ramirez
 para cada par de pañabras
 comparar las 2 letrs de la 1ª palabrar con substring
