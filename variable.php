@@ -20,20 +20,22 @@
 
 	print $$mensaje1; //lo equivalente a print $mensaje_es
 
+	
+    echo"<br> <br>";
+	
+// los incrementos y decrementos solo son validos para numeros
+
+echo "<h3>Postincrement</h3>";
+$a = 5;
+echo "Deberia ser 5:" .$a++ . "<br />\n";
+echo " Deberia ser 6:" .$a . "<br />\n";
+echo "<h3>Preincrement</h3>";
+$a = 5;
+echo "Deberia ser 6: " . ++$a . "<br />\n";
+echo "Deberia ser 6: " . $a . "<br />\n";
+	
+
 	?>
-<!-- Operradores revisar codigo-->
-	<?php
-
-	echo "<h3>Postincrement</h3>";
-	$a = 5;
-	echo “Deberia ser 5: " . $a++;
-	echo " Deberia ser 6: " . $a .;
-	echo "<h3>Preincrement</h3>";
-	$a = 5;
-	echo “Deberia ser 6: " . ++$a . "<br />\n";
-	echo “Deberia ser 6: " . $a . "<br />\n";
-
-?>
 
 </body>
 </html>
