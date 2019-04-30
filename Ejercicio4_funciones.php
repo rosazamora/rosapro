@@ -1,5 +1,5 @@
 <?php
-// es importante en las funciones definir la variable antes de hace la funcion
+// es importante en las funciones definir la variable antes de hacer la funcion
 // esta funcion nos muestra la longitud del array
 function generaarray($longitud){
 
@@ -11,7 +11,7 @@ function generaarray($longitud){
 
 }
 
-// funcion para la suma del array           
+// funcion para el maximo del array           
 function _max($array){
         $max=$array[0];
         foreach($array as $numero){
@@ -19,7 +19,7 @@ function _max($array){
         }
         return $max;
     }
-
+// funcion para la minimo del array  
 function _min($array){
     $min=$array[0];
     foreach($array as $numero){
@@ -27,7 +27,7 @@ function _min($array){
     }
     return $min;
 }   
-
+// funcion para la suma del array  
 function _suma($array){
     $sum=0;
     foreach($array as $numero){

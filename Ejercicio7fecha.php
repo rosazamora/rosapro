@@ -1,7 +1,6 @@
 <?php
 /*funcion para fecha, tenemos dos fechas allar cual es el mayor de la fecha*/
 
-    
    
 
     $fecha1= strtotime("5 May 2011");
@@ -25,7 +24,7 @@
             return $comparacion;
     }
 
-    /* hemos extraido esta llamada a otro php
+    // hemos extraido esta llamada a otro php
 
         $fecha1= strtotime("5 May 2011");
         $fecha2= strtotime("6 January 2010");

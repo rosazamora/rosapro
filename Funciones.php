@@ -5,10 +5,12 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Funciones PHP</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='estiloT.css'>
+    <script src=''></script>
+
     <?php
-    required ("Ejercicio7fecha.php")
+    //se llama a la funcion del ejercicio7
+     require ("Ejercicio7fecha.php");
     ?>
 </head>
 

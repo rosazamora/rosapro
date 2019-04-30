@@ -22,7 +22,7 @@ añadir a la variable suma su valor*/
     foreach($numeros as $numero){
         $suma=$suma+$numero;
     }  
-        
+    echo"<br> <strong>Utilizando foreach <strong>:"; 
     echo"<br> La suma es:".$suma; 
         
 
@@ -32,7 +32,7 @@ añadir a la variable suma su valor*/
 asumir que el primer elemento es el maximo por cada numero 
 comparar con el maximo si es mas grande actualizar el maximo
 */
-    $max=$numero[0];
+    $max=$numeros[0];
     foreach ($numeros as $numero) {
         if($numero>$max){
              $max=$numero;
@@ -45,9 +45,11 @@ comparar con el maximo si es mas grande actualizar el maximo
      
 
 
-//mini
-/* definir la variable min 
-asumir que el */
+//mínimo
+/* defnir variable min
+asumir que el primer elemento es el minimo por cada numero 
+comparar con el minimo si es mas pequeño actualizar el mínimo
+*/
 
     $min=$numeros[0];
     foreach($numeros as $numero){
@@ -68,7 +70,7 @@ asumir que el */
     echo "<br> <strong>Utilizando for<strong>: <br> la suma es:" .$suma;
 
 
-//maximo 
+//máximo 
     $max=$numeros[0];
     for($i=0;$i<count($numeros);$i++){
         if($numeros[$i]>$max)$max=$numeros[$i];

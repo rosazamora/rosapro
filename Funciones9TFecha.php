@@ -24,11 +24,12 @@
         }else{
             print("<p> La fecha $fecha no está en formato europeo <p>\n");
        
-       
-    
+          
         ?>
     
 </body>
 </html> 
-
+<?php
+        }
+?>
 
