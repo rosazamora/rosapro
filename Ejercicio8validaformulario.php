@@ -4,6 +4,8 @@
 <head>
 <style>
 .error {color: #FF0000;}
+
+
 </style>
 </head>
 <body>  
@@ -29,34 +31,64 @@ Acabar el ejercicio
 
 
 
+// define las variables set to empty values
+  $nameErr =$apellidoErr = $edadErr= $emailErr = $genderErr = $websiteErr = "";
+  $name =$edad = $apellido = $email =$gender = $comment = $website = "";
+//comprobamos submit
+//llamamos ($_SERVER["REQUEST_METHOD"] == "POST") al principio y una sola vez 
 
-
-// define variables and set to empty values
-$nameErr = $emailErr = $genderErr = $websiteErr = "";
-$name = $email = $gender = $comment = $website = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (empty($_POST["name"])) {
-    $nameErr = "Name is required";
-  } else {
-    $name = test_input($_POST["name"]);
+  if(isset($_REQUEST["submit"])){
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if (empty($_POST["name"])) {
+         $nameErr = "Nombre obligatorio";
+      } else {
+         $name = test_input($_POST["name"]);
     // check if name only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-      $nameErr = "Only letters and white space allowed"; 
-    }
-  }
-  
-  if (empty($_POST["email"])) {
-    $emailErr = "Email is required";
-  } else {
-    $email = test_input($_POST["email"]);
-    // check if e-mail address is well-formed
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailErr = "Invalid email format"; 
-    }
-  }
+        if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+          $nameErr = "Only letters and white space allowed"; 
+        }
+      }
     
-  if (empty($_POST["website"])) {
+      /* validacion de apellido revisar porque no es obligatorio */
+   
+      if (empty($_POST["apellido"])) {
+         $apellidoErr = "Ingresar apellido";
+        } else {
+           $apellido = test_input($_POST["name"]);
+      // check if name only contains letters and whitespace
+        if (!preg_match("/^[a-zA-Z ]*$/",$apellido)) {
+           $apellidoErr = "solo letras "; 
+        }
+     }
+     
+    /*validadion de edad sin ser obligatorio comprobacion que sea mayor
+     de edad y sea un numero*/
+   
+      if(!empty($_POST["edad"])){
+        $edad= test_input($_POST["edad"]);
+        if (preg_match("/[0-9]/",$edad)) {
+          if($edad <=18){
+            $edadErr="la edad ha de ser mayor de 18";
+          }
+        }else{
+          $edadErr = "edad tiene que ser numero"; 
+        }
+     }
+
+     
+    //validacion de email obligatorio
+
+    if (empty($_POST["email"])) {
+       $emailErr = "Email Obligatorio";
+      } else {
+        $email = test_input($_POST["email"]);
+    // check if e-mail address is well-formed
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+         $emailErr = "Formato email invalido"; 
+       }
+     }
+    
+  /*if (empty($_POST["website"])) {
     $website = "";
   } else {
     $website = test_input($_POST["website"]);
@@ -64,13 +96,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
       $websiteErr = "Invalid URL"; 
     }
-  }
+  }*/
 
-  if (empty($_POST["comment"])) {
-    $comment = "";
-  } else {
-    $comment = test_input($_POST["comment"]);
-  }
+    if (empty($_POST["comment"])) {
+      $comment = "";
+     } else {
+       $comment = test_input($_POST["comment"]);
+     }
 
   if (empty($_POST["gender"])) {
     $genderErr = "Gender is required";
@@ -78,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gender = test_input($_POST["gender"]);
   }
 }
-
+    }
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
@@ -88,37 +120,36 @@ function test_input($data) {
 ?>
 
 <h2>PHP Form Validation Example</h2>
-<p><span class="error">* required field</span></p>
+<!--Apellido no es obligatorio no haria falta llamar al error, Edad es obligatorio 
+hay que poner eror-->
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
   <label>Name</label> <input type="text" name="name" value="<?php echo $name;?>">
   <span class="error">* <?php echo $nameErr;?></span>
   <br><br>
-  E-mail: <input type="text" name="email" value="<?php echo $email;?>">
+  <label>Apellido</label> <input type="text" name="name" value="<?php echo $apellido;?>">
+  <span class="error"> <?php echo $apellidoErr;?></span>
+  <br><br>
+<!--importante para validar la edad  hay que poner el type en text para hacer 
+nuestras comprobaciones y luego pasarlo a type="number" para enviar al servidor-->
+  <label>Edad</label><input type="number" name="edad" value="<?php echo $edad;?>">
+  <span class="error"><?php echo $edadErr;?></span>
+  <br><br>
+  E-mail: <input type="email" name="email" value="<?php echo $email;?>">
   <span class="error">* <?php echo $emailErr;?></span>
   <br><br>
-  Website: <input type="text" name="website" value="<?php echo $website;?>">
+  <!--Website: <input type="text" name="website" value="<?php echo $website;?>">
   <span class="error"><?php echo $websiteErr;?></span>
-  <br><br>
+  <br><br> -->
   Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
   <br><br>
-  Genero:
+  <!--Genero:
   <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female
   <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Male
   <input type="radio" name="gender" <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other">Other  
-  <span class="error">* <?php echo $genderErr;?></span>
+  <span class="error">* <?php echo $genderErr;?></span> --->
   <br><br>
   <input type="submit" name="submit" value="Submit">  
 </form>
 
-<?php
-echo "<h2>Your Input:</h2>";
-echo $name;
-echo "<br>";
-echo $email;
-echo "<br>";
-echo $website;
-echo "<br>";
-echo $comment;
-echo "<br>";
-echo $gender;
-?>
+</body>
+</html>  
