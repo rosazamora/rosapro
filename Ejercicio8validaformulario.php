@@ -43,8 +43,8 @@ Acabar el ejercicio
          $nameErr = "Nombre obligatorio";
       } else {
          $name = test_input($_POST["name"]);
-    // check if name only contains letters and whitespace
-        if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+    // chequeamos que vayan letras y aqui permitimos espacios en blanco
+        if (!preg_match("/^[a-zA-ZñÑ ]*$/",$name)) {
           $nameErr = "Solo letras y espacios en blanco"; 
         }
       }
@@ -54,9 +54,9 @@ Acabar el ejercicio
       if (empty($_POST["apellido"])) {
          $apellidoErr = "Ingresar apellido";
         } else {
-           $apellido = test_input($_POST["name"]);
-      // check if name only contains letters and whitespace
-        if (!preg_match("/^[a-zA-Z ]*$/",$apellido)) {
+           $apellido = test_input($_POST["apellido"]);
+      // chequeamos que vayan letras,aqui no permitimos espacios en blanco
+        if (!preg_match("/^[a-zA-ZnÑ]*$/",$apellido)) {
            $apellidoErr = "solo letras "; 
         }
      }
@@ -88,29 +88,30 @@ Acabar el ejercicio
        }
      }
     
-  /*if (empty($_POST["website"])) {
-    $website = "";
-  } else {
-    $website = test_input($_POST["website"]);
-    // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
-    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
-      $websiteErr = "Invalid URL"; 
-    }
-  }*/
-
+  /* Esta es la validación para enlace a una web
+      if (empty($_POST["website"])) {
+         $website = "";
+        } else {
+        $website = test_input($_POST["website"]);
+     // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
+      if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+        $websiteErr = "Invalid URL"; 
+      }
+    }*/
+    //validacion de textarea sin obligacion de rellenar 
     if (empty($_POST["comment"])) {
-      $comment = "";
-     } else {
+       $comment = "";
+      } else {
        $comment = test_input($_POST["comment"]);
      }
-
-  if (empty($_POST["gender"])) {
-    $genderErr = "Gender is required";
-  } else {
-    $gender = test_input($_POST["gender"]);
-  }
-}
-    }
+  // validando radio button 
+     if (empty($_POST["gender"])) {
+       $genderErr = "Gender is required";
+      } else {
+        $gender = test_input($_POST["gender"]);
+      }
+     }
+       }
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
@@ -126,7 +127,7 @@ hay que poner eror-->
   <label>Name</label> <input type="text" name="name" value="<?php echo $name;?>">
   <span class="error">* <?php echo $nameErr;?></span>
   <br><br>
-  <label>Apellido</label> <input type="text" name="name" value="<?php echo $apellido;?>">
+  <label>Apellido</label> <input type="text" name="apellido" value="<?php echo $apellido;?>">
   <span class="error"> <?php echo $apellidoErr;?></span>
   <br><br>
 <!--importante para validar la edad  hay que poner el type en text para hacer 

@@ -8,8 +8,6 @@
 </head>
 <body>  
 
-
-
 <?php
 /* -Usuario y contraseña
 Las dos contraseñas que sean iguales
@@ -24,9 +22,24 @@ Para la contraseña
    https://diego.com.es/expresiones-regulares-en-php
    
    */
-        $usuario = $contraseña1=$contraseña2 = "";
-        $usuarioErr=$contraseña1Err=$contraseña2Err="";
+  
+       $usuario = $contraseña1=$contraseña2 = "";
+       $usuarioErr=$contraseña1Err=$contraseña2Err="";
 
+
+       //validando usuario
+       if(isset($_REQUEST["submit"])){
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          if (empty($_POST["name"])) {
+             $usuario ="introducir usuario";
+          } else {
+             $name = test_input($_POST["usuario"]);
+        // chequeamos que vayan letras sin espacios en blanco
+            if (!preg_match("/^[a-zA-ZñÑ]*$/",$usuario)) {
+              $usuarioErr = "Solo letras y sin espacios en blanco"; 
+            }
+          }
+        
 
 
 
@@ -39,16 +52,16 @@ Para la contraseña
 
 
 ?>
-
+<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 Usuario: <input type="usuario" name="usuario" value="<?php echo $usuario;?>">
   <span class="error">* <?php echo $usuarioErr;?></span>
   <br><br>
-$contraseña1:<input type="text" name="password" value="<?php echo $contraseña;?>">
+contraseña1:<input type="text" name="password" value="<?php echo $contraseña;?>">
 <span class="error">* <?php echo $passwordErr;?></span>
   <br><br>
 contraseña2: <input type="text" name="contraseña" value="">
 <br><br>
-  <input type="submit" name="submit" value="Submit">  
+  <input type="submit" name="submit" value="submit">  
 </form>
 
 </body>
