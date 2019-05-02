@@ -45,7 +45,7 @@ Acabar el ejercicio
          $name = test_input($_POST["name"]);
     // check if name only contains letters and whitespace
         if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-          $nameErr = "Only letters and white space allowed"; 
+          $nameErr = "Solo letras y espacios en blanco"; 
         }
       }
     
@@ -61,7 +61,7 @@ Acabar el ejercicio
         }
      }
      
-    /*validadion de edad sin ser obligatorio comprobacion que sea mayor
+    /*validadion de edad sin ser obligatorio, hacemos la comprobacion que sea mayor
      de edad y sea un numero*/
    
       if(!empty($_POST["edad"])){
@@ -82,7 +82,7 @@ Acabar el ejercicio
        $emailErr = "Email Obligatorio";
       } else {
         $email = test_input($_POST["email"]);
-    // check if e-mail address is well-formed
+    //comprobar formato correcto de mail
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
          $emailErr = "Formato email invalido"; 
        }
@@ -122,7 +122,7 @@ function test_input($data) {
 <h2>PHP Form Validation Example</h2>
 <!--Apellido no es obligatorio no haria falta llamar al error, Edad es obligatorio 
 hay que poner eror-->
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
   <label>Name</label> <input type="text" name="name" value="<?php echo $name;?>">
   <span class="error">* <?php echo $nameErr;?></span>
   <br><br>
