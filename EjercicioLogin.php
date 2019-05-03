@@ -27,7 +27,7 @@ Para la contraseña
    https://stackoverflow.com para ejemplos con soluciones que funcionan
    
    */
-
+//iniciamos sesion esto es una prueba tendrriamos que crear la pagina para navegar
 
   session_start();
   $error="";
@@ -36,7 +36,7 @@ Para la contraseña
           if($_REQUEST["contraseña"]=="Curumi?2019"){
               $_SESSION["login"]=true;
               $_SESSION["nom"]=$_REQUEST["usuario"];
-              header('Location:Sesionprivado.php');           
+              header('Sesionprivado.php');           
           }else{
               $error="Usuario o contraseña incorrecta.";
           }
