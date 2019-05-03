@@ -27,16 +27,17 @@ Para la contraseña
    https://stackoverflow.com para ejemplos con soluciones que funcionan
    
    */
-//iniciamos sesion esto es una prueba tendrriamos que crear la pagina para navegar
+
+   //iniciamos sesion esto es una prueba tendrriamos que crear la pagina para navegar
 
   session_start();
   $error="";
   if(isset($_REQUEST["submit"])){
       //recogemos la contraseña guaramos el nombre
-          if($_REQUEST["contraseña"]=="Curumi?2019"){
+          if($_REQUEST["contraseña1"]=="Curumi?2019"){
               $_SESSION["login"]=true;
               $_SESSION["nom"]=$_REQUEST["usuario"];
-              header('Sesionprivado.php');           
+              header('Location:Sesionprivado.php');           
           }else{
               $error="Usuario o contraseña incorrecta.";
           }
@@ -103,7 +104,9 @@ function test_input($data) {
     return $data;
   }
 ?>
+
 <h2>Validacion Registro</h2>
+<!-- -->
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 Usuario: <input type="text" name="usuario" value="<?php echo $usuario;?>">
   <span class="error"> <?php echo $usuarioErr;?></span>
