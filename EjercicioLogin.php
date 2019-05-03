@@ -17,13 +17,32 @@ Para la contraseña
    -contiene como minomo un caracter minisculas
    -continue como minimo un caracter un numerico
    -Que contiene un caracter de estos #!$~(esto sale con Alt Gr 4)
+   + en este ejercicio añadimos que hagamos un login 
+   iniciando sesion
+   +redireccionada a una sesion privada
+
 
    pagina para ver expresiones regulares
    https://diego.com.es/expresiones-regulares-en-php para teoria
    https://stackoverflow.com para ejemplos con soluciones que funcionan
    
    */
+
+
+  session_start();
+  $error="";
+  if(isset($_REQUEST["submit"])){
+      //recogemos la contraseña guaramos el nombre
+          if($_REQUEST["contraseña"]=="Curumi?2019"){
+              $_SESSION["login"]=true;
+              $_SESSION["nom"]=$_REQUEST["usuario"];
+              header('Location:Sesionprivado.php');           
+          }else{
+              $error="Usuario o contraseña incorrecta.";
+          }
+  }
  
+    // Definimos las variables para la validacion de Ususario 
        $usuario = $contraseña1=$contraseña2 = "";
        $usuarioErr = $contraseña1Err = $contraseña2Err="";
 
@@ -68,7 +87,7 @@ Para la contraseña
               }
           
           else{
-              $contraseña2Err= "La contraseña no coincide";
+              echo "No coinciden";
               }
           
           }

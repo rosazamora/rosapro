@@ -112,12 +112,13 @@ Acabar el ejercicio
       }
      }
        }
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
+       //funcion importante
+  function test_input($data) {
+     $data = trim($data); //para quitar espacios en blanco
+     $data = stripslashes($data);
+     $data = htmlspecialchars($data);//para evitar que pongan caracteres especiales
+    return $data;
+  }
 ?>
 
 <h2>PHP Form Validation Example</h2>
