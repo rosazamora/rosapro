@@ -5,7 +5,7 @@
 session_start();
 if(isset($_REQUEST["logout"])){
     session_destroy(); 
-    header('Location:EjercicioLogin.php');           
+    header('Location:Iniciar.php');           
 }
 //comporbamos que el login esta definido
 if(isset($_SESSION["login"])){
@@ -15,6 +15,6 @@ Bienvenido......<?=$_SESSION["nom"]?>
 <a href="Sesionprivado.php?logout">[logout]</a>
 <?php
 }else{
-    header('Location:EjercicioLogin.php');           
+    header('Location:Iniciar.php');           
 }
 ?>
