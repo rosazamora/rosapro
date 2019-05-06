@@ -5,7 +5,7 @@ if(isset($_REQUEST["submit"])){
     if(!is_uploaded_file($_FILES['fichero']['tmp_name'])){
         echo "otro error";
     }
-    // la camparte donde se recoge el fichero
+    // la camparte donde se recoge el fichero de la carpeta imgs
     $dir_subida = 'imgs/';
     //  se le dice la hora para subir el fichero, name el nombre fichero
     $fichero_subido = $dir_subida . time()."_".basename($_FILES['fichero']['name']);
