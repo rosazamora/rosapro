@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
     <meta charset="utf-8" />
     <title>Page Title</title>
-    <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo.css" />
     <script src="main.js"></script>
 </head>
 <body>
@@ -12,17 +12,17 @@
         $errUsu = $errCont1 = $errCont2 = $errors = "";
         if (isset($_REQUEST['submit'])){
             if (empty($_REQUEST["usuario"])) {
-                $errUsu = "Es obligatorio informar el usuario.";
+                $errUsu = "Introduce el usuario.";
             }else{
                 $usuario = test_input($_REQUEST["usuario"]);
             }            
             if (empty($_REQUEST["contrasena1"])) {
-                $errCont1 = "Es obligatorio informar la contraseña.";
+                $errCont1 = "Es obligatorio introducir la contraseña.";
             }else{
                 $contrasena1 = test_input($_REQUEST["contrasena1"]);
             }
             if (empty($_REQUEST["contrasena2"])) {
-                $errCont2 = "Es obligatorio informar la contraseña.";
+                $errCont2 = "Es obligatorio introducir la contraseña.";
             }else{
                 $contrasena2 = test_input($_REQUEST["contrasena2"]);
             }
@@ -42,10 +42,10 @@
             if(strlen($contrasena) < 6 || strlen($contrasena) > 8){
                 $errors = $errors . "<li>La contraseña debe tener entre 6 y 8 caracteres</li>";
             }
-            if (!preg_match('/[a-z]/',$contrasena)){
+            if (!preg_match('/[a-zñ]/',$contrasena)){
                 $errors = $errors . "<li>La contraseña debe tener al menos una letra minúscula</li>";
             }
-            if (!preg_match('/[A-Z]/',$contrasena)){
+            if (!preg_match('/[A-ZÑ]/',$contrasena)){
                 $errors = $errors . "<li>La contraseña debe tener al menos una letra mayúscula</li>";
             }
             if (!preg_match('/[0-9]/',$contrasena)){

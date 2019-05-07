@@ -43,7 +43,7 @@ Para la contraseña
           }
   }
  
-    // Definimos las variables para la validacion de Ususario 
+    // Definimos las variables para la validacion de Usuario 
        $usuario = $contraseña1=$contraseña2 = "";
        $usuarioErr = $contraseña1Err = $contraseña2Err="";
 

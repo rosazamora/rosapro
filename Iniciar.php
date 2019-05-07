@@ -1,32 +1,23 @@
 <?php
 session_start();
-
-
 $error="";
-
-if(isset($_SESSION["login"])){
-    header('Location:Sesionprivado.php');           
-}
-
-if(isset($_COOKIE["password"])){
-
-    if($_COOKIE["password"]==1234){
-
-        $_SESSION["login"]=true;
-        $_SESSION["nom"]=$_COOKIE["nomusuari"];
-        header('Location:Sesionprivado.php');  
-
-    }else{
-        $error="credenciales incorrectas";
-    }
-
+  if(isset($_SESSION["login"])){
+    header('Location:ejemplo_privado.php');           
+ }
+    if(isset($_COOKIE["password"])){
+        if($_COOKIE["password"]==1234){
+          $_SESSION["login"]=true;
+          $_SESSION["nom"]=$_COOKIE["nomusuari"];
+          header('Location:ejemplo_privado.php');  
+     }else{
+          $error="credenciales incorrectas";
+        }
          
-
 }
-
 if(isset($_REQUEST["submit"])){
 
         if($_REQUEST["password"]=="1234"){
+
             $_SESSION["login"]=true;
             $_SESSION["nom"]=$_REQUEST["username"];
 
@@ -36,11 +27,10 @@ if(isset($_REQUEST["submit"])){
 
             }
 
-            header('Location:Sesionprivado.php');           
+            header('Location:ejemplo_privado.php');           
         }else{
             $error="Usuario o contraseña incorrecta.";
         }
-
 
 
 }
